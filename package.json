@@ -10,9 +10,7 @@
   "license": "ISC",
   "devDependencies": {
     "tap-min": "^2.0.0",
-    "tape": "^4.11.0"
-  },
-  "dependencies": {
+    "tape": "^4.11.0",
     "prob.js": "^1.0.6"
   }
 }
