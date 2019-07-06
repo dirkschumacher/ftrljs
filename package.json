@@ -1,0 +1,18 @@
+{
+  "name": "ftrljs",
+  "version": "0.0.1",
+  "description": "FTRL online learning in plain JS",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js | tap-min"
+  },
+  "author": "Dirk Schumacher <mail@dirk-schumacher.net>",
+  "license": "ISC",
+  "devDependencies": {
+    "tap-min": "^2.0.0",
+    "tape": "^4.11.0"
+  },
+  "dependencies": {
+    "prob.js": "^1.0.6"
+  }
+}
