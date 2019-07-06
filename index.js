@@ -30,14 +30,16 @@ const ftrl = (n_features, lambda1 = 0, lambda2 = 0, alpha = 0.1, beta = 1) => {
   }
 
   const computeWeights = () => {
+    let newWeights = zeros(n_features)
     for (let i = 0; i < n_features; i++) {
       const updateCoordinate = Math.abs(z[i]) > lambda1
       if (updateCoordinate) {
         let w = z[i] - Math.sign(z[i]) * lambda1
         w = w / -((beta + Math.sqrt(n[i])) / alpha + lambda2)
-        lastWeights[i] = w
+        newWeights[i] = w
       }
     }
+    lastWeights = newWeights
     return lastWeights
   }
 
