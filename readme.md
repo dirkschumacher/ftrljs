@@ -37,7 +37,7 @@ optimizer.weights()
 
 ## Memory
 
-The algorithm stores three dense arrays in the size of the features. If your number of features is to large a sparse implementation of the algorithm can be used.
+The algorithm stores three dense arrays in the size of the features. If your number of features is too large, a sparse implementation of the algorithm can be used.
 
 ## References
 
