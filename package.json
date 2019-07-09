@@ -1,6 +1,6 @@
 {
   "name": "ftrljs",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "FTRL online learning in plain JS",
   "main": "index.js",
   "scripts": {
