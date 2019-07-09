@@ -21,7 +21,7 @@ test("fit random data", (t) => {
   // the other two components are irrelevant
   const rnorm = rand.normal(0, 1)
   const optimizer = ftrl(3, 10, 1)
-  for (let i = 0; i < 100000; i++) {
+  for (let i = 0; i < 10000; i++) {
     const x = rnorm()
     optimizer.fit([x, rnorm(), rnorm()], x < 0 ? 1 : 0)
   }
