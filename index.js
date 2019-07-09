@@ -1,11 +1,15 @@
 "use strict"
 
 const zeros = (n) => {
-  let val = []
+  let val = Array(n)
   for (let i = 0; i < n; i++) {
-    val.push(0)
+    val[i] = 0
   }
   return val
+}
+
+const inverseLogit = (x) => {
+  return 1.0 / (1.0 + Math.exp(-x))
 }
 
 const ftrl = (n_features, lambda1 = 0, lambda2 = 0, alpha = 0.1, beta = 1) => {
@@ -26,20 +30,20 @@ const ftrl = (n_features, lambda1 = 0, lambda2 = 0, alpha = 0.1, beta = 1) => {
     for (let i = 0; i < n_features; i++) {
       accum += lastWeights[i] * x[i]
     }
-    return 1.0 / (1.0 + Math.exp(-1.0 * accum))
+    return inverseLogit(accum)
   }
 
   const computeWeights = () => {
-    let newWeights = zeros(n_features)
     for (let i = 0; i < n_features; i++) {
       const updateCoordinate = Math.abs(z[i]) > lambda1
       if (updateCoordinate) {
         let w = z[i] - Math.sign(z[i]) * lambda1
         w = w / -((beta + Math.sqrt(n[i])) / alpha + lambda2)
-        newWeights[i] = w
+        lastWeights[i] = w
+      } else {
+        lastWeights[i] = 0
       }
     }
-    lastWeights = newWeights
     return lastWeights
   }
 
