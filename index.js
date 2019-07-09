@@ -60,10 +60,38 @@ const ftrl = (n_features, lambda1 = 0, lambda2 = 0, alpha = 0.1, beta = 1) => {
     }
   }
 
+  const save = () => {
+    return {
+      config: {
+        lambda1,
+        lambda2,
+        alpha,
+        beta,
+        n_features
+      },
+      n,
+      z,
+      lastWeights
+    }
+  }
+
+  const load = (savedModel) => {
+    lambda1 = savedModel.config.lambda1
+    lambda2 = savedModel.config.lambda2
+    alpha = savedModel.config.alpha
+    beta = savedModel.config.beta
+    n_features = savedModel.config.n_features
+    n = savedModel.n
+    z = savedModel.z
+    lastWeights = savedModel.lastWeights
+  }
+
   return {
     fit,
     predict,
-    "weights": computeWeights
+    "weights": computeWeights,
+    save,
+    load
   }
 }
 

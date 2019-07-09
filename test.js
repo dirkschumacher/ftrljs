@@ -29,3 +29,29 @@ test("fit random data", (t) => {
   t.true(optimizer.predict([-1, 0, 3]) > 0.8)
   t.end()
 })
+
+test("save/load model", (t) => {
+  const optimizer = ftrl(3, 1, 2, 0.5, 2)
+  optimizer.fit([1, 2, 3], 1)
+  const weights = optimizer.weights()
+  const saved = optimizer.save()
+  const newOptimizer = ftrl(10, 20, 30, 40, 50)
+  newOptimizer.load(saved)
+  const newWeights = newOptimizer.weights()
+  for (let i = 0; i < 3; i++) {
+    t.equal(weights[i], newWeights[i])
+  }
+  t.equal(optimizer.predict([1, 2, 3]), newOptimizer.predict([1, 2, 3]))
+  const newSaved = newOptimizer.save()
+  t.equal(newSaved.config.lambda1, saved.config.lambda1)
+  t.equal(newSaved.config.lambda2, saved.config.lambda2)
+  t.equal(newSaved.config.alpha, saved.config.alpha)
+  t.equal(newSaved.config.beta, saved.config.beta)
+  t.equal(newSaved.config.n_features, saved.config.n_features)
+  for (let i = 0; i < 3; i++) {
+    t.equal(newSaved.z[i], saved.z[i])
+    t.equal(newSaved.n[i], saved.n[i])
+    t.equal(newSaved.lastWeights[i], saved.lastWeights[i])
+  }
+  t.end()
+})

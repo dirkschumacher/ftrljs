@@ -25,6 +25,12 @@ optimizer.predict([2, 3, 4])
 
 // or just get the weights
 optimizer.weights()
+
+// ore store everything for later
+const checkpoint = optimizer.save()
+// ...
+const newOptimizer = ftrl()
+newOptimizer.load(checkpoint)
 ```
 
 ## API
@@ -33,6 +39,8 @@ optimizer.weights()
 * `fit()` fits a single training example (array + result)
 * `predict()` takes an array and returns the prediction (number between 0 and 1)
 * `weights()` computes and returns the weights
+* `save()` export the current state of the optimizer to an object
+* `load()` restore a optimizer from a previously saved state
 
 
 ## Memory
