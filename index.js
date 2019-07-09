@@ -12,6 +12,10 @@ const inverseLogit = (x) => {
   return 1.0 / (1.0 + Math.exp(-x))
 }
 
+// Reference
+// McMahan, H. Brendan, et al. “Ad click prediction: a view from the
+// trenches.” Proceedings of the 19th ACM SIGKDD international conference
+// on Knowledge discovery and data mining. ACM, 2013.
 const ftrl = (n_features, lambda1 = 0, lambda2 = 0, alpha = 0.1, beta = 1) => {
   let z = zeros(n_features)
   let n = zeros(n_features)
